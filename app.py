@@ -8,8 +8,7 @@ from chesscom_api import ChessComClient
 from analyzer import analyze_pgn
 from schemas import AnalyzeGameRequest, AnalyzeGameResponse, RecentGameItem
 
-# مسیر Stockfish را با مسیر واقعی خودت تنظیم کن
-STOCKFISH_PATH = r"C:\Users\203-236\Desktop\chess preview\stockfish\stockfish-windows-x86-64-avx2.exe"
+STOCKFISH_PATH = r"D:\stockfish\stockfish-windows-x86-64-avx2.exe"
 
 app = FastAPI(
     title="Chess Review API",
@@ -17,10 +16,9 @@ app = FastAPI(
     description="Backend API for Chess.com-style game review"
 )
 
-# برای اینکه بعداً React frontend بتواند راحت به API وصل شود
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # بعداً می‌توانیم محدودش کنیم
+    allow_origins=["*"],   
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -1,0 +1,298 @@
+:root {
+  font-family: Inter, system-ui, Arial, sans-serif;
+  color: #f5f5f5;
+  background: #1f1f23;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #1f1f23;
+  color: #f5f5f5;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.search-box {
+  display: flex;
+  gap: 12px;
+}
+
+.search-box input {
+  width: 260px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #444;
+  background: #2a2a30;
+  color: #fff;
+}
+
+.search-box button,
+.control-bar button,
+.move-item {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  background: #3a3f4b;
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-box button:hover,
+.control-bar button:hover,
+.move-item:hover {
+  background: #4b5160;
+}
+
+.search-box button:disabled,
+.control-bar button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.review-layout {
+  display: grid;
+  grid-template-columns: 560px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.board-card,
+.panel {
+  background: #2a2a30;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.control-bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  background: #2a2a30;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.panel h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.move-list {
+  max-height: 420px;
+}
+
+.moves-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+.move-item {
+  text-align: left;
+  width: 100%;
+}
+
+.move-item.active {
+  background: #6a8dff;
+}
+
+.move-class {
+  opacity: 0.8;
+  font-size: 13px;
+}
+
+.empty-state,
+.error-box {
+  background: #2a2a30;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.error-box {
+  border: 1px solid #c44;
+  margin-bottom: 16px;
+}
+
+a {
+  color: #8db3ff;
+}
+
+@media (max-width: 1100px) {
+  .review-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.move-item {
+  text-align: left;
+  width: 100%;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.move-item-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.move-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.move-number {
+  opacity: 0.7;
+  min-width: 26px;
+}
+
+.move-san {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.move-badge {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.move-subline {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.move-review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.review-badge {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.review-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.review-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 12px;
+  background: #23262d;
+  border-radius: 12px;
+}
+
+.review-key {
+  opacity: 0.75;
+}
+
+.review-value {
+  font-weight: 700;
+  text-align: right;
+}
+.board-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 1 / 1;
+}
+
+.board-wrapper > div:first-child {
+  width: 100%;
+  height: 100%;
+}
+
+.board-overlay-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.board-badge-cell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.board-move-badge {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+
+  width: 25px;
+  height: 25px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 900;
+  font-size: 8px;
+  line-height: 1;
+
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
