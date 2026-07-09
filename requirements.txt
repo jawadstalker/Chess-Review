@@ -1,3 +1,6 @@
 requests
 python-chess
 pandas
+fastapi
+uvicorn
+pydantic
