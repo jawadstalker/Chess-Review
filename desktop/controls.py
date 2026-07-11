@@ -26,7 +26,7 @@ class ControlsWidget(QWidget):
         root.setSpacing(12)
 
         # ===========================
-        # عنوان
+        
         # ===========================
 
         title = QLabel("Game Controls")
@@ -41,7 +41,7 @@ class ControlsWidget(QWidget):
         root.addWidget(title)
 
         # ===========================
-        # دکمه Analyze
+        #
         # ===========================
 
         self.analyze_button = QPushButton("Analyze Game")
@@ -51,7 +51,6 @@ class ControlsWidget(QWidget):
         root.addWidget(self.analyze_button)
 
         # ===========================
-        # کنترل حرکت‌ها
         # ===========================
 
         move_layout = QHBoxLayout()
@@ -66,7 +65,7 @@ class ControlsWidget(QWidget):
         root.addLayout(move_layout)
 
         # ===========================
-        # اسلایدر حرکت‌ها
+        
         # ===========================
 
         self.move_slider = QSlider(Qt.Horizontal)
@@ -78,7 +77,6 @@ class ControlsWidget(QWidget):
         root.addWidget(self.move_slider)
 
         # ===========================
-        # شماره حرکت
         # ===========================
 
         self.move_label = QLabel("Move: 0 / 0")
@@ -88,7 +86,6 @@ class ControlsWidget(QWidget):
         root.addWidget(self.move_label)
 
         # ===========================
-        # جداکننده
         # ===========================
 
         line = QFrame()
@@ -98,7 +95,6 @@ class ControlsWidget(QWidget):
         root.addWidget(line)
 
         # ===========================
-        # اطلاعات تحلیل
         # ===========================
 
         self.eval_label = QLabel("Eval : --")
