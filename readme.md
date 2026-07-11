@@ -13,39 +13,38 @@
 
 ---
 
-## 📌 Overview
+## Overview
 
-**Chess Review** is a chess analysis application designed to help players understand their games better by providing detailed reviews of moves, identifying mistakes, and highlighting opportunities for improvement.
+Chess Review is a tool for analyzing chess games and providing useful insights about player performance.
 
-The goal of this project is to create a powerful yet simple chess assistant that helps players learn from their matches instead of only showing the final result.
-
----
-
-## ✨ Features
-
-* ♟️ Interactive chess board
-* 🔍 Move-by-move game analysis
-* 📊 Position evaluation and performance review
-* ⚠️ Detection of mistakes and blunders
-* ⭐ Identification of strong moves
-* 📈 Game progress visualization
-* 🎯 Learning-focused feedback
-* 🖥️ Modern and responsive interface
+The project focuses on transforming a normal chess match into a learning experience by showing critical moments, possible improvements, and move evaluations.
 
 ---
 
-## 🎯 Project Goals
+## Features
 
-The main objectives of Chess Review are:
-
-* Help beginners understand why they lose games
-* Provide insights similar to professional chess analysis tools
-* Make chess improvement easier and more accessible
-* Combine software engineering with artificial intelligence and chess logic
+* Interactive chess board
+* Move-by-move game analysis
+* Detection of mistakes and blunders
+* Identification of strong moves
+* Position evaluation
+* Game review and statistics
+* Modern and responsive interface
 
 ---
 
-## 🏗️ Project Architecture
+## Goals
+
+The main goals of Chess Review are:
+
+* Help players understand their mistakes
+* Make chess analysis easier for beginners
+* Provide feedback similar to professional chess analysis tools
+* Combine chess algorithms with modern software development
+
+---
+
+## Project Structure
 
 ```
 Chess-Review
@@ -56,42 +55,31 @@ Chess-Review
 │   └── Game Visualization
 │
 ├── Analysis Engine
-│   ├── Position Evaluation
-│   ├── Move Analysis
-│   └── Review Generation
+│   ├── Move Evaluation
+│   ├── Position Analysis
+│   └── Review System
 │
 └── Data Layer
-    └── Game Information & History
+    └── Game Data
 ```
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies
 
-> Update this section according to the final project stack.
+Update this section according to the final implementation.
 
-* Frontend:
+Possible technologies:
 
-  * React / JavaScript / TypeScript
-  * Modern UI Components
-  * Responsive Design
-
-* Backend:
-
-  * Python / Node.js
-
-* Chess Engine:
-
-  * Stockfish
-  * Chess algorithms
-
-* Tools:
-
-  * Git & GitHub
+* React / JavaScript / TypeScript
+* Python
+* Chess Libraries
+* Stockfish Engine
+* Git & GitHub
 
 ---
 
-## 🚀 Installation
+## Installation
 
 Clone the repository:
 
@@ -99,7 +87,7 @@ Clone the repository:
 git clone https://github.com/jawadstalker/Chess-Review.git
 ```
 
-Move into the project directory:
+Enter the project directory:
 
 ```bash
 cd Chess-Review
@@ -111,7 +99,7 @@ Install dependencies:
 npm install
 ```
 
-Run the development server:
+Run the application:
 
 ```bash
 npm run dev
@@ -119,53 +107,53 @@ npm run dev
 
 ---
 
-## 🎮 Usage
+## How to Use
 
-1. Start the application
-2. Load or enter a chess game
-3. Let Chess Review analyze the match
+1. Start the application.
+2. Load a chess game or enter moves manually.
+3. Run the analysis.
 4. Review:
 
    * Best moves
    * Mistakes
-   * Critical positions
+   * Blunders
+   * Important positions
    * Improvement suggestions
 
 ---
 
-## 📷 Screenshots
+## Screenshots
 
-Add screenshots here:
+Add application screenshots here:
 
 ```
-/screenshots
+screenshots/
 ```
 
 Example:
 
-![Chess Review Screenshot](screenshots/home.png)
+```md
+![Chess Review](screenshots/home.png)
+```
 
 ---
 
-## 🧠 Future Improvements
+## Future Improvements
 
-Planned features:
-
-* [ ] AI-powered explanations for moves
-* [ ] Player improvement statistics
-* [ ] Opening recognition
-* [ ] Endgame analysis
-* [ ] Chess puzzle generation
-* [ ] Online game import
-* [ ] User profiles and history
+* AI-generated explanations for moves
+* Player performance tracking
+* Opening database integration
+* Endgame analysis
+* Chess puzzle generation
+* Game history and user profiles
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
-Contributions are welcome!
+Contributions are welcome.
 
-If you want to improve Chess Review:
+Steps:
 
 1. Fork the repository
 2. Create a new branch
@@ -180,29 +168,29 @@ git checkout -b feature/new-feature
 git commit -m "Add new feature"
 ```
 
-4. Push your branch
+4. Push changes
 
 ```bash
 git push origin feature/new-feature
 ```
 
-5. Open a Pull Request
+5. Create a Pull Request
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
 
 ---
 
-## 👨‍💻 Author
+## Author
 
-Created by **Jawad Stalker**
+**Jawad Stalker**
 
 GitHub:
 https://github.com/jawadstalker
 
 ---
 
-⭐ If you like this project, consider giving it a star!
+If this project helped you, consider giving it a star.
