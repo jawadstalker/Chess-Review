@@ -1,5 +1,8 @@
 from __future__ import annotations
+from chesscom_api import ChessComClient
+from analyzer import analyze_pgn
 
+STOCKFISH_PATH = r"D:\stockfish\stockfish-windows-x86-64-avx2.exe"
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import (
@@ -31,7 +34,11 @@ class MainWindow(QMainWindow):
         self.username = ""
         self.current_game = None
         self.current_move_index = 0
-
+        self.games = []
+        self.analysis_report = None
+        self.current_game = None
+        # self.current_game = self.games[0]
+        print(self.current_game)
         self._create_actions()
         self._create_menu()
         self._build_ui()
@@ -233,7 +240,6 @@ class MainWindow(QMainWindow):
         username = self.username_edit.text().strip()
 
         if not username:
-
             QMessageBox.warning(
                 self,
                 "Username",
@@ -249,41 +255,141 @@ class MainWindow(QMainWindow):
 
         self.analysis_box.clear()
 
-        self.analysis_box.append(
-            f"Username: {username}"
-        )
+        try:
+            client = ChessComClient(username)
+            self.games = client.get_recent_games(max_games=10)
+
+        except Exception as e:
+            QMessageBox.critical(
+                self,
+                "Error",
+                str(e)
+            )
+            return
+
+        if not self.games:
+            self.analysis_box.append("No recent games found.")
+            return
+
+        self.current_game = self.games[0]
 
         self.analysis_box.append(
-            "\nWaiting for Chess.com API..."
+            f"Found {len(self.games)} games\n"
+        )
+
+        for i, game in enumerate(self.games, start=1):
+
+            self.analysis_box.append(
+                f"{i}. {game.get('url', 'Unknown URL')}"
+            )
+
+        self.statusBar().showMessage(
+            f"{len(self.games)} games loaded."
         )
 
     def analyze_current_game(self):
 
+        if self.current_game is None:
+
+            QMessageBox.information(
+                self,
+                "No Game",
+                "Please load a game first."
+            )
+            return
+
+        pgn = self.current_game.get("pgn")
+
+        if not pgn:
+
+            QMessageBox.warning(
+                self,
+                "PGN Missing",
+                "This game does not contain a PGN."
+            )
+            return
+
         self.statusBar().showMessage(
-            "Analyzing..."
+            "Analyzing with Stockfish..."
         )
 
-        self.analysis_box.append(
-            "\nStockfish analysis started..."
+        try:
+
+            report = analyze_pgn(
+                pgn_text=pgn,
+                stockfish_path=STOCKFISH_PATH,
+                username=self.username,
+                depth=12
+            )
+
+        except Exception as e:
+
+            QMessageBox.critical(
+                self,
+                "Analysis Error",
+                str(e)
+            )
+            return
+
+        self.analysis_report = report
+
+        summary = report["summary"]
+        info = report["game_info"]
+
+        self.update_game_info(
+            info["white"],
+            info["black"],
+            info["result"],
+            info["opening"]
+        )
+
+        self.update_analysis(
+            f'{summary["player_accuracy"]}%',
+            "-",
+            "Finished",
+            f"""Accuracy : {summary["player_accuracy"]}
+
+Blunders : {summary["player_blunders"]}
+Mistakes : {summary["player_mistakes"]}
+Inaccuracies : {summary["player_inaccuracies"]}
+
+Opening : {info["opening"]}
+
+Moves : {summary["total_player_moves"]}
+"""
+        )
+
+        self.current_move_index = 0
+
+        self.statusBar().showMessage(
+            "Analysis Complete."
         )
 
     def next_move(self):
 
-        self.current_move_index += 1
+        if self.analysis_report is None:
+            return
+
+        moves = self.analysis_report["moves"]
+
+        if self.current_move_index < len(moves) - 1:
+            self.current_move_index += 1
 
         self.statusBar().showMessage(
-            f"Move {self.current_move_index}"
+            f"Move {self.current_move_index + 1}"
         )
 
     def previous_move(self):
+
+        if self.analysis_report is None:
+            return
 
         if self.current_move_index > 0:
             self.current_move_index -= 1
 
         self.statusBar().showMessage(
-            f"Move {self.current_move_index}"
+            f"Move {self.current_move_index + 1}"
         )
-
     # ==================================================
     # Update Methods
     # ==================================================
