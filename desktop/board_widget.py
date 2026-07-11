@@ -11,7 +11,18 @@ from PySide6.QtWidgets import (
     QGraphicsView,
     QVBoxLayout,
 )
+from pathlib import Path
 
+from PySide6.QtGui import (
+    QColor,
+    QBrush,
+    QPen,
+    QPixmap,
+)
+
+from PySide6.QtWidgets import (
+    QGraphicsPixmapItem,
+)
 
 BOARD_SIZE = 8
 SQUARE_SIZE = 80
@@ -24,6 +35,14 @@ LAST_MOVE_COLOR = QColor("#f6f669")
 
 
 class BoardWidget(QWidget):
+    PIECE_IMAGES = {
+    chess.PAWN: "Pawn",
+    chess.KNIGHT: "Knight",
+    chess.BISHOP: "Bishop",
+    chess.ROOK: "Rook",
+    chess.QUEEN: "Queen",
+    chess.KING: "King",
+}
 
     def __init__(self, parent=None):
 
